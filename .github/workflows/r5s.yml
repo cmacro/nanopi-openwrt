@@ -68,7 +68,8 @@ jobs:
             git remote remove upstream
             cd -
           fi
-          repo sync -c --no-tags --no-clone-bundle -j8
+          repo sync -c --no-tags --no-clone-bundle -j8 --force-sync
+          
           cd friendlywrt
           git fetch --unshallow || true
           git remote add upstream https://github.com/coolsnowwolf/lede && git fetch upstream
