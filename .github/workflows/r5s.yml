@@ -59,6 +59,7 @@ jobs:
         run: |
           mkdir friendlywrt-rk3568 && sudo mount --bind lede friendlywrt-rk3568
           cd friendlywrt-rk3568
+          repo sync --force-sync
           repo init -u https://github.com/friendlyarm/friendlywrt_manifests -b master-v22.03 -m rk3568.xml --repo-url=https://github.com/friendlyarm/repo  --no-clone-bundle --depth=1
           if [ -d friendlywrt/.git ]; then
             cd friendlywrt
@@ -68,7 +69,7 @@ jobs:
             git remote remove upstream
             cd -
           fi
-          repo sync -c --no-tags --no-clone-bundle -j8 --force-sync
+          repo sync -c --no-tags --no-clone-bundle -j8
           
           cd friendlywrt
           git fetch --unshallow || true
